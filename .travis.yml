@@ -15,6 +15,7 @@ perl:
   - "5.10"
   - "5.8"
 before_install:
+  - |
     curl -L https://cpanmin.us | perl - -nq Devel::Cover::Report::Coveralls
     curl -L https://cpanmin.us | perl - -nq --with-recommends --with-configure --installdeps .
 script:

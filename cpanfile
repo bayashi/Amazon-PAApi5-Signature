@@ -4,6 +4,11 @@ requires 'perl', '5.008005';
 requires 'strict';
 requires 'warnings';
 requires 'Carp';
+requires 'Class::Accessor::Lite';
+requires 'POSIX';
+requires 'Digest::SHA';
+requires 'JSON';
+requires 'String::CamelCase';
 
 on 'test' => sub {
     requires 'Test::More', '0.88';

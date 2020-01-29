@@ -222,6 +222,8 @@ Amazon::PAApi5::Signature - Amazon Product Advertising API(PA-API) 5.0 Helper
 
     warn Dumper($res->status_line, $res->content);
 
+See B<example/> directory of this module.
+
 
 =head1 DESCRIPTION
 

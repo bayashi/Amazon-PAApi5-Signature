@@ -33,7 +33,7 @@ my $SECRET_KEY = 'YOUR_SECRET_KEY';
         default_headers => HTTP::Headers->new($sig->headers),
     );
 
-    my $res = $ua->post($sig->req_url, Content => $sig->payload);
+    my $res = $ua->post($sig->req_url, Content => $sig->payload, Content_Type => 'application/json; charset=utf-8');
 
     warn Dumper($res->status_line, $res->content);
 }

@@ -30,3 +30,4 @@
 ^META\.yml$
 ^MYMETA\.yml$
 ^MYMETA\.json$
+^Amazon-PAApi5-Signature-*

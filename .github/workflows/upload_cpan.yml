@@ -1,0 +1,41 @@
+name: upload_cpan
+
+on:
+  push:
+    branches-ignore:
+      - '*'
+    tags:
+      - '*.*'
+
+jobs:
+  perl:
+    runs-on: ubuntu-latest
+
+    container:
+      image: perl:latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: perl -V
+        run: perl -V
+      - name: Install dependencies
+        run: curl -sL https://git.io/cpm | perl - install -g --with-recommends --with-test --with-configure --with-develop --show-build-log-on-failure
+      - name: Run build
+        run: |
+            perl Makefile.PL && make && make manifest
+            make disttest
+            make dist
+      - name: CPANize
+        env:
+          PAUSE_USER: ${{ secrets.PAUSE_USER }}
+          PAUSE_PASSWORD: ${{ secrets.PAUSE_PASSWORD }}
+          PAUSE_MAILTO: ${{ secrets.PAUSE_MAILTO }}
+        run: |
+            curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure CPAN::Uploader
+            echo "user" $PAUSE_USER > $HOME/.pause
+            echo "password" $PAUSE_PASSWORD >> $HOME/.pause
+            echo "mailto" $PAUSE_MAILTO >> $HOME/.pause
+            chmod 0600 $HOME/.pause
+            ls -la $HOME
+            ls -la
+            cpan-upload -c $HOME/.pause -u $PAUSE_USER -p "" ./Amazon-PAApi5-Signature-`perl -Ilib -MAmazon::PAApi5::Signature -e 'print $Amazon::PAApi5::Signature::VERSION'`.tar.gz

@@ -19,7 +19,7 @@ my $SECRET_KEY = 'YOUR_SECRET_KEY';
         'www.amazon.co.jp',
     )->to_json({
         ItemIds   => [$asin],
-        Resources   => [qw/
+        Resources => [qw/
             ItemInfo.Title
         /],
     });

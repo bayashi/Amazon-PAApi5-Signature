@@ -24,8 +24,7 @@ my $SECRET_KEY = 'YOUR_SECRET_KEY';
         $SECRET_KEY,
         $payload,
         {
-            resource_path => '/paapi5/getbrowsenodes',,
-            operation     => 'GetBrowseNodes',
+            operation => 'GetBrowseNodes',
         },
     );
 

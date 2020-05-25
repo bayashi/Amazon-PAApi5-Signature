@@ -29,10 +29,9 @@ my $SECRET_KEY = 'YOUR_SECRET_KEY';
         $SECRET_KEY,
         $payload,
         {
-            resource_path => '/paapi5/searchitems',
-            operation     => 'SearchItems',
-            host          => 'webservices.amazon.co.jp',
-            region        => 'us-west-2',
+            operation => 'SearchItems',
+            host      => 'webservices.amazon.co.jp',
+            region    => 'us-west-2',
         },
     );
 

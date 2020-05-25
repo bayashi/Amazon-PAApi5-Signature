@@ -35,12 +35,15 @@ sub new {
     my $payload    = shift or croak 'payload is required';
     my $opt        = shift || {};
 
+    my $operation     = $opt->{operation} || 'SearchItems';
+    my $resource_path = $opt->{resource_path} ? $opt->{resource_path} : '/paapi5/' . lc($operation);
+
     return bless {
         access_key     => $access_key,
         secret_key     => $secret_key,
         payload        => $payload,
-        resource_path  => $opt->{resource_path}  || '/paapi5/searchitems',
-        operation      => $opt->{operation}      || 'SearchItems',
+        resource_path  => $resource_path,
+        operation      => $operation,
         host           => $opt->{host}           || 'webservices.amazon.com',
         region         => $opt->{region}         || 'us-east-1',
         service        => $opt->{service}        || 'ProductAdvertisingAPI',

@@ -1,0 +1,26 @@
+name: example_script
+
+on:
+  push:
+    branches:
+      - 'do_example_script_*'
+    tags-ignore:
+      - '*'
+
+jobs:
+  perl:
+    runs-on: ubuntu-latest
+
+    container:
+      image: perl:latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: perl -V
+        run: perl -V
+      - name: Install dependencies
+        run: curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure
+      - name: Run examples
+        run: |
+          perl example/jp_iteminfo.pl
+          perl example/jp_itemsearch.pl

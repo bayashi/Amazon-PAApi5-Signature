@@ -29,4 +29,5 @@ jobs:
           AMAZON_SECRET_KEY: ${{ secrets.AMAZON_SECRET_KEY }}
         run: |
           perl -Ilib example/jp_iteminfo.pl
+          sleep 3;
           perl -Ilib example/jp_itemsearch.pl

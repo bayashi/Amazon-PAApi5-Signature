@@ -7,9 +7,9 @@ use HTTP::Headers;
 use LWP::UserAgent;
 use Data::Dumper;
 
-my $PARTNER_TAG = 'YOUR_ASSOCIATE_PARTNER_TAG-22';
-my $ACCESS_KEY = 'YOUR_ACCESS_KEY';
-my $SECRET_KEY = 'YOUR_SECRET_KEY';
+my $PARTNER_TAG = $ENV{AMAZON_PARTNER_TAG};
+my $ACCESS_KEY = $ENV{AMAZON_ACCESS_KEY};
+my $SECRET_KEY = $ENV{AMAZON_SECRET_KEY};
 
 {
     my $payload = Amazon::PAApi5::Payload->new(

@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure
-          curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure HTTP::Headers LWP::UserAgent Data::Dumper
+          curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure HTTP::Headers LWP::UserAgent LWP::Protocol::https Data::Dumper
       - name: Run examples
         env:
           AMAZON_PARTNER_TAG: ${{ secrets.AMAZON_PARTNER_TAG }}

@@ -19,8 +19,10 @@ jobs:
       - name: perl -V
         run: perl -V
       - name: Install dependencies
-        run: curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure
+        run: |
+          curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure
+          curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure HTTP::Headers LWP::UserAgent Data::Dumper
       - name: Run examples
         run: |
-          perl example/jp_iteminfo.pl
-          perl example/jp_itemsearch.pl
+          perl -Ilib example/jp_iteminfo.pl
+          perl -Ilib example/jp_itemsearch.pl

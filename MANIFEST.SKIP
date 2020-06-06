@@ -25,6 +25,7 @@
 ^\.shipit$
 ^\.travis\.yml$
 ^\.git/
+^\.github/
 \.sw[po]$
 ^MYMETA\.*$
 ^META\.yml$

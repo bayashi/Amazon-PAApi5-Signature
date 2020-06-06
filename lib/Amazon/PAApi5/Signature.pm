@@ -222,13 +222,15 @@ This code is an example of US region.
     my $ua = LWP::UserAgent->new;
 
     my $req = POST $sig->req_url, $sig->headers, Content => $sig->payload;
-    my $res = $ua->execute($req);
+    my $res = $ua->request($req);
 
     warn Dumper($res->status_line, $res->content);
 
 NOTE that Product Advertising API 5.0 has usage limit. Please confirm L<https://webservices.amazon.com/paapi5/documentation/troubleshooting/api-rates.html> or a page for your region.
 
 See B<example/> directory of this module for more examples.
+
+L<https://github.com/bayashi/Amazon-PAApi5-Signature/tree/master/example>
 
 
 =head1 DESCRIPTION

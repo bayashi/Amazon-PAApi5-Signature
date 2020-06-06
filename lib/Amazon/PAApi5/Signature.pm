@@ -26,7 +26,7 @@ use Class::Accessor::Lite (
     /],
 );
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 sub new {
     my $class      = shift;
@@ -267,7 +267,7 @@ Get a hash for HTTP request
 
 =begin html
 
-<a href="https://github.com/bayashi/Amazon-PAApi5-Signature/blob/master/LICENSE"><img src="https://img.shields.io/badge/LICENSE-Artistic%202.0-GREEN.png"></a> <a href="http://travis-ci.org/bayashi/Amazon-PAApi5-Signature"><img src="https://secure.travis-ci.org/bayashi/Amazon-PAApi5-Signature.png?_t=1591463501"/></a> <a href="https://coveralls.io/r/bayashi/Amazon-PAApi5-Signature"><img src="https://coveralls.io/repos/bayashi/Amazon-PAApi5-Signature/badge.png?_t=1591463501&branch=master"/></a>
+<a href="https://github.com/bayashi/Amazon-PAApi5-Signature/blob/master/LICENSE"><img src="https://img.shields.io/badge/LICENSE-Artistic%202.0-GREEN.png"></a> <a href="http://travis-ci.org/bayashi/Amazon-PAApi5-Signature"><img src="https://secure.travis-ci.org/bayashi/Amazon-PAApi5-Signature.png?_t=1591465089"/></a> <a href="https://coveralls.io/r/bayashi/Amazon-PAApi5-Signature"><img src="https://coveralls.io/repos/bayashi/Amazon-PAApi5-Signature/badge.png?_t=1591465089&branch=master"/></a>
 
 =end html
 

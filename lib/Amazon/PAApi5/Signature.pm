@@ -35,12 +35,15 @@ sub new {
     my $payload    = shift or croak 'payload is required';
     my $opt        = shift || {};
 
+    my $operation     = $opt->{operation} || 'SearchItems';
+    my $resource_path = $opt->{resource_path} ? $opt->{resource_path} : '/paapi5/' . lc($operation);
+
     return bless {
         access_key     => $access_key,
         secret_key     => $secret_key,
         payload        => $payload,
-        resource_path  => $opt->{resource_path}  || '/paapi5/searchitems',
-        operation      => $opt->{operation}      || 'SearchItems',
+        resource_path  => $resource_path,
+        operation      => $operation,
         host           => $opt->{host}           || 'webservices.amazon.com',
         region         => $opt->{region}         || 'us-east-1',
         service        => $opt->{service}        || 'ProductAdvertisingAPI',
@@ -193,7 +196,7 @@ Amazon::PAApi5::Signature - Amazon Product Advertising API(PA-API) 5.0 Helper
 
     use Amazon::PAApi5::Payload;
     use Amazon::PAApi5::Signature;
-    use HTTP::Headers;
+    use HTTP::Request::Common;
     use LWP::UserAgent;
     use Data::Dumper;
 
@@ -214,11 +217,10 @@ Amazon::PAApi5::Signature - Amazon Product Advertising API(PA-API) 5.0 Helper
         }),
     );
 
-    my $ua = LWP::UserAgent->new(
-        default_headers => HTTP::Headers->new($sig->headers),
-    );
+    my $ua = LWP::UserAgent->new;
 
-    my $res = $ua->post($sig->req_url, Content => $sig->payload);
+    my $req = POST $sig->req_url, $sig->headers, Content => $sig->payload;
+    my $res = $ua->execute($req);
 
     warn Dumper($res->status_line, $res->content);
 

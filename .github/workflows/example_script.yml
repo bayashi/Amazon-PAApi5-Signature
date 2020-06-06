@@ -1,0 +1,33 @@
+name: example_script
+
+on:
+  push:
+    branches:
+      - 'do_example_script_*'
+    tags-ignore:
+      - '*'
+
+jobs:
+  perl:
+    runs-on: ubuntu-latest
+
+    container:
+      image: perl:latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: perl -V
+        run: perl -V
+      - name: Install dependencies
+        run: |
+          curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure
+          curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure HTTP::Headers LWP::UserAgent LWP::Protocol::https Data::Dumper
+      - name: Run examples
+        env:
+          AMAZON_PARTNER_TAG: ${{ secrets.AMAZON_PARTNER_TAG }}
+          AMAZON_ACCESS_KEY: ${{ secrets.AMAZON_ACCESS_KEY }}
+          AMAZON_SECRET_KEY: ${{ secrets.AMAZON_SECRET_KEY }}
+        run: |
+          perl -Ilib example/jp_iteminfo.pl
+          sleep 3;
+          perl -Ilib example/jp_itemsearch.pl

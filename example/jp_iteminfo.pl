@@ -12,11 +12,16 @@ my $ACCESS_KEY = $ENV{AMAZON_ACCESS_KEY};
 my $SECRET_KEY = $ENV{AMAZON_SECRET_KEY};
 
 {
+    my $asin = '4873118247';
+
     my $payload = Amazon::PAApi5::Payload->new(
-        $PARTNER_TAG
+        $PARTNER_TAG,
+        'www.amazon.co.jp',
     )->to_json({
-        BrowseNodeIds => ['6134005011'],
-        Resources     => ["BrowseNodes.Children"],
+        ItemIds   => [$asin],
+        Resources => [qw/
+            ItemInfo.Title
+        /],
     });
 
     my $sig = Amazon::PAApi5::Signature->new(
@@ -24,7 +29,9 @@ my $SECRET_KEY = $ENV{AMAZON_SECRET_KEY};
         $SECRET_KEY,
         $payload,
         {
-            operation => 'GetBrowseNodes',
+            operation => 'GetItems',
+            host      => 'webservices.amazon.co.jp',
+            region    => 'us-west-2',
         },
     );
 

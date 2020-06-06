@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use Amazon::PAApi5::Payload;
 use Amazon::PAApi5::Signature;
-use HTTP::Headers;
+use HTTP::Request::Common;
 use LWP::UserAgent;
 use Data::Dumper;
 
@@ -35,11 +35,10 @@ my $SECRET_KEY = $ENV{AMAZON_SECRET_KEY};
         },
     );
 
-    my $ua = LWP::UserAgent->new(
-        default_headers => HTTP::Headers->new($sig->headers),
-    );
+    my $ua = LWP::UserAgent->new;
 
-    my $res = $ua->post($sig->req_url, Content => $sig->payload);
+    my $req = POST $sig->req_url, $sig->headers, Content => $sig->payload;
+    my $res = $ua->request($req);
 
     warn Dumper($res->status_line, $res->content);
 }

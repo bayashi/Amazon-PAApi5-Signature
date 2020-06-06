@@ -31,7 +31,7 @@ my $SECRET_KEY = $ENV{AMAZON_SECRET_KEY};
     my $ua = LWP::UserAgent->new;
 
     my $req = POST $sig->req_url, $sig->headers, Content => $sig->payload;
-    my $res = $ua->execute($req);
+    my $res = $ua->request($req);
 
     warn Dumper($res->status_line, $res->content);
 }

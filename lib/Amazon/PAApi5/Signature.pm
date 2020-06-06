@@ -230,6 +230,8 @@ NOTE that Product Advertising API 5.0 has usage limit. Please confirm L<https://
 
 See B<example/> directory of this module for more examples.
 
+L<https://github.com/bayashi/Amazon-PAApi5-Signature/tree/master/example>
+
 
 =head1 DESCRIPTION
 

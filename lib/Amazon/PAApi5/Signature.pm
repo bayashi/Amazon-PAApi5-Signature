@@ -194,6 +194,8 @@ Amazon::PAApi5::Signature - Amazon Product Advertising API(PA-API) 5.0 Helper
 
 =head1 SYNOPSIS
 
+This code is an example of US region.
+
     use Amazon::PAApi5::Payload;
     use Amazon::PAApi5::Signature;
     use HTTP::Headers;
@@ -225,14 +227,16 @@ Amazon::PAApi5::Signature - Amazon Product Advertising API(PA-API) 5.0 Helper
 
     warn Dumper($res->status_line, $res->content);
 
-See B<example/> directory of this module.
+NOTE that Product Advertising API 5.0 has usage limit. Please confirm L<https://webservices.amazon.com/paapi5/documentation/troubleshooting/api-rates.html> or a page for your region.
+
+See B<example/> directory of this module for more examples.
 
 
 =head1 DESCRIPTION
 
 Amazon::PAApi5::Signature generates a request headers and request body for Amazon Product Advertising API(PA-API) 5.0
 
-<https://webservices.amazon.com/paapi5/documentation/quick-start.html>
+L<https://webservices.amazon.com/paapi5/documentation/quick-start.html>
 
 
 =head1 METHODS

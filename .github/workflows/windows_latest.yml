@@ -7,6 +7,9 @@ on:
       - '**windows**'
     tags-ignore:
       - '*'
+    paths-ignore:
+      - '**/*.md'
+      - '**/.gitignore'
 
 jobs:
   perl:

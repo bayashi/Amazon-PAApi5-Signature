@@ -6,7 +6,13 @@ on:
       - '*'
     tags-ignore:
       - '*'
+    paths-ignore:
+      - '**/*.md'
+      - '**/.gitignore'
   pull_request:
+    paths-ignore:
+      - '**/*.md'
+      - '**/.gitignore'
 
 jobs:
   perl:

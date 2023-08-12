@@ -3,7 +3,7 @@ name: windows_latest
 on:
   push:
     branches:
-      - master
+      - main
       - '**windows**'
     tags-ignore:
       - '*'
@@ -13,7 +13,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
       - name: perl -V
         run: perl -V
       - name: Install dependencies
